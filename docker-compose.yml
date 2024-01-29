@@ -1,0 +1,18 @@
+version: '3'
+services:
+    app1:
+        build: ./mobile
+        ports:
+            - "5001:80"
+    app2:
+        build: ./bank
+        ports:
+            - "5002:80"
+    nginx:
+        build: ./nginx
+        ports:
+            - "8080:80"
+        depends_on:
+            - app1
+            - app2
+    
